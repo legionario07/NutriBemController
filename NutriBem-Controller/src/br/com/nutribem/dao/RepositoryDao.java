@@ -40,7 +40,7 @@ public class RepositoryDao implements IDAO {
 			session.update(entidade);
 			session.getTransaction().commit();
 		} catch (Exception e) {
-			System.out.println("Erro ao Atualizar objeto no Banco de Dados - \n" + e.getMessage());
+			System.out.println("Erro ao Persistir objeto no Banco de Dados - \n" + e.getMessage());
 		} finally {
 			session.close();
 		}
@@ -84,18 +84,18 @@ public class RepositoryDao implements IDAO {
 	@Override
 	public List<EntidadeDominio> findAll(EntidadeDominio entidade) {
 		List<EntidadeDominio> lista = new ArrayList<EntidadeDominio>();
-		
+
 		StringBuilder sql = new StringBuilder();
 		sql.append("from ");
 		sql.append(entidade.getClass().getSimpleName());
 		sql.append(" order by id asc");
-		
+
 		session = HibernateUtil.getSession();
 		try {
-			
+
 			Query query = session.createQuery(sql.toString());
 			lista = query.getResultList();
-			
+
 		} catch (Exception e) {
 			System.out.println("Erro ao pesquisar objetos no Banco de Dados - \n" + e.getMessage());
 		} finally {

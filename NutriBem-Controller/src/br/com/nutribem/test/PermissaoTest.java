@@ -7,62 +7,64 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.nutribem.dao.RepositoryDao;
-import br.com.nutribem.dominio.Categoria;
+import br.com.nutribem.dominio.Permissao;
 import br.com.nutribem.dominio.EntidadeDominio;
 
-public class CategoriaTest implements ITest {
+public class PermissaoTest implements ITest {
 
-	public Categoria categoria = null;
+	public Permissao permissao = null;
 	public RepositoryDao repositoryDao = new RepositoryDao();
 	
 	@Override
 	@Test
 	public void create() {
 		
-		categoria = new Categoria("Teste");
+		permissao = new Permissao("Usuario");
 		
-		System.out.println(repositoryDao.save(categoria));
+		System.out.println(repositoryDao.save(permissao));
 	}
 
 	@Override
 	@Ignore
 	public void delete() {
 
-		categoria = new Categoria();
-		categoria.setId(1L);
-		repositoryDao.delete(categoria);
+		permissao = new Permissao();
+		permissao.setId(1L);
+		repositoryDao.delete(permissao);
 	}
 
 	@Override
 	@Ignore
 	public void find() {
-		categoria = new Categoria();
-		categoria.setId(5L);
-		categoria = (Categoria) repositoryDao.find(categoria);
+		permissao = new Permissao();
+		permissao.setId(1L);
+		permissao = (Permissao) repositoryDao.find(permissao);
 		
-		System.out.println(categoria);
+		System.out.println(permissao);
 		
 	}
 
 	@Override
 	@Ignore
 	public void update() {
-		categoria = new Categoria(1L, "Teste 5");
-		repositoryDao.update(categoria);
+		permissao = new Permissao(1L, "Teste 5");
+		repositoryDao.update(permissao);
 	}
 
 	@Override
-	@Ignore
+	@Test
 	public void findAll() {
 
 		List<EntidadeDominio> lista = new ArrayList<EntidadeDominio>();
-		lista = repositoryDao.findAll(new Categoria());
+		lista = repositoryDao.findAll(new Permissao());
 		
 		for(EntidadeDominio e : lista){
-			if(e instanceof Categoria){
+			if(e instanceof Permissao){
 				System.out.println(e);
 			}
 		}
+		
+		
 		
 	}
 	
