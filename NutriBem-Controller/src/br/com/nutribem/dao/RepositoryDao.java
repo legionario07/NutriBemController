@@ -3,11 +3,15 @@ package br.com.nutribem.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
 
+import br.com.nutribem.dominio.Cidade;
+import br.com.nutribem.dominio.Colaborador;
 import br.com.nutribem.dominio.EntidadeDominio;
+import br.com.nutribem.dominio.Estado;
 import br.com.nutribem.factory.HibernateUtil;
 
 public class RepositoryDao implements IDAO {
@@ -103,6 +107,143 @@ public class RepositoryDao implements IDAO {
 		}
 
 		return lista;
+	}
+
+	/**
+	 * 
+	 * @param estado
+	 *            Recebe um entidade Estado e localiza pelo seu UF
+	 * @return retorna null se nao encontrar ou um entidade Estado preenchida
+	 */
+	public Estado findEstadoByUf(Estado estado) {
+
+		Estado estadoRetorno = null;
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery("from Estado where uf = ?");
+			query.setParameter(0, estado.getUf());
+
+			estadoRetorno = new Estado();
+			estadoRetorno = (Estado) query.getSingleResult();
+
+		} catch (NoResultException nre) {
+			return null;
+		} catch (Exception e) {
+			System.out.println("Erro ao Pesquisar objeto no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return estadoRetorno;
+	}
+
+	/**
+	 * 
+	 * @param Cidade
+	 *            Recebe uma cidade como parametro e localiza pelo seu nome e Uf
+	 * @return Retorna null se nao encontrar ou uma cidade preenchida
+	 */
+	public Cidade findCidadeByNomeAndUf(Cidade cidade) {
+
+		Cidade cidadeRetorno = null;
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery("from Cidade where nome = ? and estado_id = ?");
+			query.setParameter(0, cidade.getNome());
+			query.setParameter(1, cidade.getEstado().getId());
+
+			cidadeRetorno = new Cidade();
+			cidadeRetorno = (Cidade) query.getSingleResult();
+
+		} catch (NoResultException nre) {
+			return null;
+		} catch (Exception e) {
+			System.out.println("Erro ao Pesquisar objeto no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return cidadeRetorno;
+	}
+
+	/**
+	 * 
+	 * @param entidade
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public Long findLastId(EntidadeDominio entidade) {
+
+		List<EntidadeDominio> lista = new ArrayList<EntidadeDominio>();
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("from ");
+		sql.append(entidade.getClass().getSimpleName());
+		sql.append(" order by id desc");
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery(sql.toString());
+
+			lista = query.getResultList();
+
+		} catch (NoResultException nre) {
+			return null;
+		} catch (Exception e) {
+			System.out.println("Erro ao Pesquisar objeto no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return lista.get(0).getId();
+	}
+
+	/**
+	 * 
+	 * @param entidade
+	 *            Uma entidade dominio
+	 * @return return null se nao encontrar ou um colaborador se a busca
+	 *         resultar
+	 */
+	public EntidadeDominio login(EntidadeDominio entidade) {
+
+		Colaborador colaboradorRetorno = null;
+
+		if (!(entidade instanceof Colaborador))
+			return null;
+
+		colaboradorRetorno = new Colaborador();
+		colaboradorRetorno = (Colaborador) entidade;
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM colaborador ");
+		sql.append("inner join usuario on usuario.id = colaborador.usuario_id ");
+		sql.append("where usuario.login = ? and usuario.senha = ? and colaborador.ativo = 1");
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery(sql.toString());
+			query.setParameter(0, colaboradorRetorno.getUsuario().getLogin());
+			query.setParameter(1, colaboradorRetorno.getUsuario().getSenha());
+
+			colaboradorRetorno = new Colaborador();
+			colaboradorRetorno = (Colaborador) query.getSingleResult();
+
+		} catch (NoResultException nre) {
+			return null;
+		} catch (Exception e) {
+			System.out.println("Erro ao Deletar objeto no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return colaboradorRetorno;
 	}
 
 }

@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="C:/Users/PauLinHo/Documents/Libs/org-apache-commons-logging.jar"/>
 	<classpathentry kind="lib" path="C:/Users/PauLinHo/Documents/Libs/primefaces-6.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
+	<classpathentry kind="lib" path="C:/Users/PauLinHo/Documents/Libs/cep_java_Tomaz_Lavieri/webServiceCep/webServiceCep.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

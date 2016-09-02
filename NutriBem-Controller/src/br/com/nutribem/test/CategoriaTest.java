@@ -16,7 +16,7 @@ public class CategoriaTest implements ITest {
 	public RepositoryDao repositoryDao = new RepositoryDao();
 	
 	@Override
-	@Test
+	@Ignore
 	public void create() {
 		
 		categoria = new Categoria("Teste");
@@ -52,7 +52,7 @@ public class CategoriaTest implements ITest {
 	}
 
 	@Override
-	@Ignore
+	@Test
 	public void findAll() {
 
 		List<EntidadeDominio> lista = new ArrayList<EntidadeDominio>();
