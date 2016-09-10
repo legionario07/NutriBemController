@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.dominio.Permissao;
 
 /**
- * Classe Strategy reponsável pela Validação de um Permissao
+ * Classe Strategy reponsavel pela Validacao de um Permissao
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaPermissao implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Permissao e faz a Validação pelo Nome
-	 * @return Retorna um objeto Permissao do BD válido ou Null se não for encontrado
+	 *            um objeto Permissao e faz a Validacao pelo Nome
+	 * @return Retorna um objeto Permissao do BD valido ou Null se nao for encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
 

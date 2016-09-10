@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Colaborador;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy repons·vel pela ValidaÁ„o de um Colaborador
+ * Classe Strategy repons√°vel pela Valida√ß√£o de um Colaborador
  * 
  * @author Paulinho
  *
@@ -13,8 +13,8 @@ public class ValidaColaborador implements IValidacaoStrategy {
 
 	/**
 	 * 
-	 * @param recebe um objeto Colaborador e faz a validaÁ„o pelo ID
-	 * @return Retorna um objeto Colaborador do BD v·lido ou Null se n„o for encontrado
+	 * @param recebe um objeto Colaborador e faz a valida√ß√£o pelo ID
+	 * @return Retorna um objeto Colaborador do BD v√°lido ou Null se n√£o for encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
 
@@ -59,14 +59,6 @@ public class ValidaColaborador implements IValidacaoStrategy {
 				retorno.append("O login deve ser deve ser prenchido");
 				return retorno.toString();
 			}
-			
-			/**
-			 * DEve ser Ativo ou N„o			 */
-			if (colaborador.getIsAtivo().equals("")) {
-				retorno.append("Deve ser ativo ou n„o");
-				return retorno.toString();
-			}
-			
 			
 			
 

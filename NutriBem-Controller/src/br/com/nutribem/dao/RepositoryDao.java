@@ -28,6 +28,7 @@ public class RepositoryDao implements IDAO {
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println("Erro ao Persistir objeto no Banco de Dados - \n" + e.getMessage());
+			entidade.setId(0l);
 		} finally {
 			session.close();
 		}
@@ -55,10 +56,19 @@ public class RepositoryDao implements IDAO {
 	public void delete(EntidadeDominio entidade) {
 
 		session = HibernateUtil.getSession();
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("delete from ");
+		sql.append(entidade.getClass().getSimpleName());
+		sql.append(" where id = ?");
+		
 		try {
 			session.beginTransaction();
-			session.delete(entidade);
-			session.getTransaction().commit();
+			Query query = session.createQuery(sql.toString());
+			query.setParameter(0, entidade.getId());
+			
+			query.executeUpdate();
+			
 		} catch (Exception e) {
 			System.out.println("Erro ao Deletar objeto no Banco de Dados - \n" + e.getMessage());
 		} finally {
@@ -76,7 +86,7 @@ public class RepositoryDao implements IDAO {
 		try {
 			entidadeRetorno = session.find(entidade.getClass(), entidade.getId());
 		} catch (Exception e) {
-			System.out.println("Erro ao Deletar objeto no Banco de Dados - \n" + e.getMessage());
+			System.out.println("Erro ao Pesquisar objeto no Banco de Dados - \n" + e.getMessage());
 		} finally {
 			session.close();
 		}
@@ -221,9 +231,10 @@ public class RepositoryDao implements IDAO {
 		colaboradorRetorno = (Colaborador) entidade;
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT * FROM colaborador ");
-		sql.append("inner join usuario on usuario.id = colaborador.usuario_id ");
-		sql.append("where usuario.login = ? and usuario.senha = ? and colaborador.ativo = 1");
+		sql.append("from Colaborador c ");
+		sql.append("where c.usuario.login = ? and ");
+		sql.append("c.usuario.senha = md5(?)");
+
 
 		session = HibernateUtil.getSession();
 		try {
@@ -233,6 +244,7 @@ public class RepositoryDao implements IDAO {
 			query.setParameter(1, colaboradorRetorno.getUsuario().getSenha());
 
 			colaboradorRetorno = new Colaborador();
+			//colaboradorRetorno = (Colaborador) query.getResultList().get(0);
 			colaboradorRetorno = (Colaborador) query.getSingleResult();
 
 		} catch (NoResultException nre) {

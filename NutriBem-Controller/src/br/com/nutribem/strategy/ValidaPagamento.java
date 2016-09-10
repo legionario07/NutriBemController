@@ -8,7 +8,7 @@ import br.com.nutribem.dominio.Pedido;
 import br.com.nutribem.utils.DataUtil;
 
 /**
- * Classe Strategy reponsável pela Validação de uma Pagamento
+ * Classe Strategy reponsavel pela Validacao de uma Pagamento
  * 
  * @author Paulinho
  *
@@ -18,8 +18,8 @@ public class ValidaPagamento implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Pagamento e faz a Validação pelo Nome
-	 * @return Retorna um objeto Pagamento do BD válido ou Null se não for
+	 *            um objeto Pagamento e faz a Validacao pelo Nome
+	 * @return Retorna um objeto Pagamento do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
@@ -43,7 +43,7 @@ public class ValidaPagamento implements IValidacaoStrategy {
 			}
 			
 			if (DataUtil.compararDatas(pagamento.getDataPagamento(), DataUtil.pegarDataAtualDoSistema())==-1) {
-				retorno.append("A data de pagamento não pode ser maior que o dia de hoje");
+				retorno.append("A data de pagamento nÃ£o pode ser maior que o dia de hoje");
 				return retorno.toString();
 			}
 			
@@ -53,7 +53,7 @@ public class ValidaPagamento implements IValidacaoStrategy {
 			}
 			
 			if (pagamento.getValorPago().compareTo(valorPedidos)<-1) {
-				retorno.append("O valor pago não pode ser menor que o total a ser pago");
+				retorno.append("O valor pago nï¿½o pode ser menor que o total a ser pago");
 				return retorno.toString();
 			}
 

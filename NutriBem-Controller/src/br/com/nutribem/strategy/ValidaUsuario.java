@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.dominio.Usuario;
 
 /**
- * Classe Strategy reponsável pela Validação de um Usuario
+ * Classe Strategy reponsavel pela Validacao de um Usuario
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaUsuario implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Usuario e faz a Validação pelo Nome
-	 * @return Retorna um objeto Usuario do BD válido ou Null se não for encontrado
+	 *            um objeto Usuario e faz a Validacao pelo Nome
+	 * @return Retorna um objeto Usuario do BD valido ou Null se nao for encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
 
@@ -38,14 +38,21 @@ public class ValidaUsuario implements IValidacaoStrategy {
 			}
 			
 			if (usuario.getPermissao()==null) {
-				retorno.append("A permissão deve ser preenchida");
+				retorno.append("A permissÃ£o deve ser preenchida");
 				return retorno.toString();
 			}
 			
 			if (usuario.getPermissao().getNivel().equals("")) {
-				retorno.append("A permissão deve ser preenchida");
+				retorno.append("A permissÃ£o deve ser preenchida");
 				return retorno.toString();
 			}
+			/**
+			 * DEve ser Ativo ou Nï¿½o			 */
+			if (usuario.getAtivo().equals("")) {
+				retorno.append("Deve ser ativo ou nÃ£o");
+				return retorno.toString();
+			}
+			
 
 		} else {
 			return null;

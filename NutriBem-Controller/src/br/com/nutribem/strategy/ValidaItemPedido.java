@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.ItemPedido;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de uma ItemPedido
+ * Classe Strategy reponsavel pela Validacao de uma ItemPedido
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaItemPedido implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto ItemPedido e faz a Validação pelo Nome
-	 * @return Retorna um objeto ItemPedido do BD válido ou Null se não for
+	 *            um objeto ItemPedido e faz a Validacao pelo Nome
+	 * @return Retorna um objeto ItemPedido do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
@@ -34,12 +34,12 @@ public class ValidaItemPedido implements IValidacaoStrategy {
 			}
 			
 			if (itemPedido.getProdutos()==null) {
-				retorno.append("É necessário haver produtos.");
+				retorno.append("Ã‰ necessario haver produtos.");
 				return retorno.toString();
 			}
 			
 			if (itemPedido.getProdutos().isEmpty()) {
-				retorno.append("É necessário haver produtos.");
+				retorno.append("Ã‰ necessario haver produtos.");
 				return retorno.toString();
 			}
 

@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Cidade;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy repons·vel pela ValidaÁ„o de um Cidade
+ * Classe Strategy repons√°vel pela Valida√ß√£o de um Cidade
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaCidade implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Cidade e faz a ValidaÁ„o pelo Nome
-	 * @return Retorna um objeto Cidade do BD v·lido ou Null se n„o for encontrado
+	 *            um objeto Cidade e faz a Valida√ß√£o pelo Nome
+	 * @return Retorna um objeto Cidade do BD v√°lido ou Null se n√£o for encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
 

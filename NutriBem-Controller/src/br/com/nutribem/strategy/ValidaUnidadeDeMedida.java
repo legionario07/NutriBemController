@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.UnidadeDeMedida;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de uma UnidadeDeMedida
+ * Classe Strategy reponsavel pela Validacao de uma UnidadeDeMedida
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaUnidadeDeMedida implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto UnidadeDeMedida e faz a Validação pelo Nome
-	 * @return Retorna um objeto UnidadeDeMedida do BD válido ou Null se não for
+	 *            um objeto UnidadeDeMedida e faz a Validacao pelo Nome
+	 * @return Retorna um objeto UnidadeDeMedida do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {

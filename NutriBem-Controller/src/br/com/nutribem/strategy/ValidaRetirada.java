@@ -6,7 +6,7 @@ import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.dominio.Retirada;
 
 /**
- * Classe Strategy reponsável pela Validação de um Retirada
+ * Classe Strategy reponsavel pela Validacao de um Retirada
  * 
  * @author Paulinho
  *
@@ -42,7 +42,7 @@ public class ValidaRetirada implements IValidacaoStrategy {
 				return retorno.toString();
 			}
 			if (retirada.getDescricao().equals("")) {
-				retorno.append("É Necessário preencher a descrição da Retirada");
+				retorno.append("ï¿½ Necessï¿½rio preencher a descriÃ§Ã£o da Retirada");
 				return retorno.toString();
 			}
 			if ((retirada.getValor().compareTo(new BigDecimal(0)))!=1) {

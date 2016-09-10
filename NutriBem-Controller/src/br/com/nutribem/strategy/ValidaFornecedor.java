@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Fornecedor;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de um Fornecedor
+ * Classe Strategy reponsavel pela Validacao de um Fornecedor
  * 
  * @author Paulinho
  *
@@ -13,8 +13,8 @@ public class ValidaFornecedor implements IValidacaoStrategy {
 
 	/**
 	 * 
-	 * @param recebe um objeto Fornecedor e faz a validação pelo ID
-	 * @return Retorna um objeto Fornecedor do BD válido ou Null se não for encontrado
+	 * @param recebe um objeto Fornecedor e faz a validacao pelo ID
+	 * @return Retorna um objeto Fornecedor do BD valido ou Null se nao for encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
 

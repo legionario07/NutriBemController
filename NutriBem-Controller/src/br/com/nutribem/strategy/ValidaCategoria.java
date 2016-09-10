@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Categoria;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy repons·vel pela ValidaÁ„o de uma Categoria
+ * Classe Strategy repons√°vel pela Valida√ßao de uma Categoria
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaCategoria implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Categoria e faz a ValidaÁ„o pelo Nome
-	 * @return Retorna um objeto Categoria do BD v·lido ou Null se n„o for
+	 *            um objeto Categoria e faz a Valida√ß√£o pelo Nome
+	 * @return Retorna um objeto Categoria do BD v√°lido ou Null se n√£o for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {

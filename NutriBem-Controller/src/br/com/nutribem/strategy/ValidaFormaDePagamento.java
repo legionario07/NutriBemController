@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.FormaDePagamento;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de uma FormaDePagamento
+ * Classe Strategy reponsavel pela Validacao de uma FormaDePagamento
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaFormaDePagamento implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto FormaDePagamento e faz a Validação pelo Nome
-	 * @return Retorna um objeto FormaDePagamento do BD válido ou Null se não for
+	 *            um objeto FormaDePagamento e faz a Validacao pelo Nome
+	 * @return Retorna um objeto FormaDePagamento do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {

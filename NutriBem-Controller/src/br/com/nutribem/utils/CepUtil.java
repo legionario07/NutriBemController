@@ -18,7 +18,7 @@ public abstract class CepUtil {
 	/**
 	 * 
 	 * @param cep Recebe um String com o CEP
-	 * @return Um Endereco ou null se n„o encontrar
+	 * @return Um Endereco ou null se n√£o encontrar
 	 */
 	public static Endereco buscarCep(String cep) {
 

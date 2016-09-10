@@ -8,15 +8,15 @@ import java.util.Date;
 public abstract class DataUtil {
 
 	/**
-	 * Recebe duas data e realiza a comparação
+	 * Recebe duas data e realiza a comparacao
 	 * 
 	 * @param Date
 	 *            DataCadastro
 	 * @param Date
 	 *            DataDEstino
-	 * @return uma inteiro com os seguintes valores: -1 = a data de cadastro é
-	 *         maior que a dataDestino 0 = ambas das datas são iguais 1 = a
-	 *         dataDestno é maior que a data de Cadastro
+	 * @return uma inteiro com os seguintes valores: -1 = a data de cadastro Ã©
+	 *         maior que a dataDestino 0 = ambas das datas sÃ£o iguais 1 = a
+	 *         dataDestno Ã© maior que a data de Cadastro
 	 */
 	public static int compararDatas(Date dataCadastro, Date dataDestino) {
 
@@ -62,7 +62,7 @@ public abstract class DataUtil {
 
 	/**
 	 * @param recebe
-	 *            uma Date e devolve um int com a diferença em dias
+	 *            uma Date e devolve um int com a diferenca em dias
 	 * @return um inteiro com o valor em Dias
 	 */
 	public static int devolverDataEmDias(Date dataAnterior) {
@@ -135,7 +135,7 @@ public abstract class DataUtil {
 	/**
 	 * 
 	 * @param data Recebe um string com a data
-	 * @return Uma data no Padrão dd/MM/yyyy
+	 * @return Uma data no Padrao dd/MM/yyyy
 	 */
 	public static Date getDataFormatadata(String data) {
 
@@ -152,13 +152,13 @@ public abstract class DataUtil {
 	}
 
 	/**
-	 * Valida a idade maxima do Cliente, não podendo ter nascido depois de
+	 * Valida a idade maxima do Cliente, nao podendo ter nascido depois de
 	 * 01/01/1900
 	 * 
 	 * @param data
-	 * @return um inteiro devendo ser diferente de -1 1 a data de nascimento é
-	 *         posterior a 110 anos 0 a data de nascimento é igual a 110 anos
-	 *         atras -1 a data de nascimento é inferior a 110 anos atras
+	 * @return um inteiro devendo ser diferente de -1 1 a data de nascimento Ã©
+	 *         posterior a 110 anos 0 a data de nascimento Ã© igual a 110 anos
+	 *         atras -1 a data de nascimento Ã© inferior a 110 anos atras
 	 */
 	public static int validarIdadeMaxima(Date data) {
 		int i;

@@ -7,7 +7,7 @@ import br.com.nutribem.dominio.Produto;
 import br.com.nutribem.utils.DataUtil;
 
 /**
- * Classe Strategy reponsável pela Validação de uma Produto
+ * Classe Strategy reponsavel pela Validacao de uma Produto
  * 
  * @author Paulinho
  *
@@ -17,8 +17,8 @@ public class ValidaProduto implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Produto e faz a Validação pelo Nome
-	 * @return Retorna um objeto Produto do BD válido ou Null se não for
+	 *            um objeto Produto e faz a Validacao pelo Nome
+	 * @return Retorna um objeto Produto do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
@@ -37,7 +37,7 @@ public class ValidaProduto implements IValidacaoStrategy {
 			}
 			
 			if (produto.getDescricao().equals("")) {
-				retorno.append("A Descrição deve ser preenchida");
+				retorno.append("A Descriï¿½ï¿½o deve ser preenchida");
 				return retorno.toString();
 			}
 			
@@ -47,22 +47,22 @@ public class ValidaProduto implements IValidacaoStrategy {
 			}
 			
 			if (produto.getQuantidadeEstoque()<0) {
-				retorno.append("A Quantidade Em estoque não deve ser maior negativa");
+				retorno.append("A Quantidade Em estoque nÃ£o deve ser maior negativa");
 				return retorno.toString();
 			}
 			
 			if (produto.getPreco().compareTo(new BigDecimal(0))==-1) {
-				retorno.append("O valor não pode ser negativo");
+				retorno.append("O valor nÃ£o pode ser negativo");
 				return retorno.toString();
 			}
 			
 			if (DataUtil.compararDatas(produto.getDataDeFabricacao(), DataUtil.pegarDataAtualDoSistema())==-1) {
-				retorno.append("A data de Fabricação não pode ser maior que o dia de Hoje");
+				retorno.append("A data de FabricaÃ§Ã£o nÃ£o pode ser maior que o dia de Hoje");
 				return retorno.toString();
 			}
 			
 			if (DataUtil.compararDatas(DataUtil.pegarDataAtualDoSistema(), produto.getDataDeValidade())==-1) {
-				retorno.append("A data de Validade não pode ser menor que o dia de Hoje");
+				retorno.append("A data de Validade nÃ£o pode ser menor que o dia de Hoje");
 				return retorno.toString();
 			}
 

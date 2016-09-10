@@ -55,7 +55,7 @@ public class Fachada implements IFachada {
 
 		mapRegrasDeNegocios = new HashMap<String, Map<String, List<IValidacaoStrategy>>>();
 
-		/* Criando instâncias de regras de negócio a serem utilizados */
+		/* Criando instancias de regras de negocio a serem utilizados */
 		ValidaCategoria validaCategoria = new ValidaCategoria();
 		ValidaCidade validaCidade = new ValidaCidade();
 		ValidaColaborador validaColaborador = new ValidaColaborador();
@@ -271,11 +271,16 @@ public class Fachada implements IFachada {
 			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
 			entidades.add(entidade);
 			resultado.setEntidades(entidades);
-			resultado.setMsg("Operação efetuada com sucesso!");
+			resultado.setMsg("OperaÃ§Ã£o efetuada com sucesso!");
+			if (entidade.getId() == 0) {
+				resultado = new Resultado();
+				resultado.setMsg("Objeto jÃ¡ cadastrado.\n");
+				return resultado;
+			}
 
 		} else {
 			resultado = new Resultado();
-			resultado.setMsg("Não foi possivel realizar a operação.\n");
+			resultado.setMsg("NÃ£o foi possivel realizar a OperaÃ§Ã£o.\n");
 			resultado.setMsg(msg);
 		}
 
@@ -298,11 +303,11 @@ public class Fachada implements IFachada {
 			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
 			entidades.add(entidade);
 			resultado.setEntidades(entidades);
-			resultado.setMsg("Operação efetuada com sucesso!");
+			resultado.setMsg("OperaÃ§Ã£o efetuada com sucesso!");
 
 		} else {
 			resultado = new Resultado();
-			resultado.setMsg("Não foi possivel realizar a operação.\n");
+			resultado.setMsg("NÃ£o foi possivel realizar a OperaÃ§Ã£o.\n");
 			resultado.setMsg(msg);
 		}
 
@@ -324,10 +329,10 @@ public class Fachada implements IFachada {
 			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
 			entidades.add(entidade);
 			resultado.setEntidades(entidades);
-			resultado.setMsg("Operação efetuada com sucesso!");
+			resultado.setMsg("OperaÃ§Ã£o efetuada com sucesso!");
 		} else {
 			resultado = new Resultado();
-			resultado.setMsg("Não foi possivel realizar a operação.\n");
+			resultado.setMsg("NÃ£o foi possivel realizar a OperaÃ§Ã£o.\n");
 			resultado.setMsg(msg);
 
 		}
@@ -353,7 +358,7 @@ public class Fachada implements IFachada {
 
 		} else {
 			resultado = new Resultado();
-			resultado.setMsg("Não foi possivel localizar no banco de dados.\n");
+			resultado.setMsg("NÃ£o foi possivel localizar no banco de dados.\n");
 			resultado.setMsg(msg);
 			;
 		}
@@ -375,7 +380,7 @@ public class Fachada implements IFachada {
 
 		} else {
 			resultado = new Resultado();
-			resultado.setMsg("Não foi possivel localiza no banco de dados.\n");
+			resultado.setMsg("NÃ£o foi possivel localiza no banco de dados.\n");
 			resultado.setMsg(msg);
 		}
 

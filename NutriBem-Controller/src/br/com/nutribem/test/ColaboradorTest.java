@@ -40,16 +40,16 @@ public class ColaboradorTest implements ITest {
 		permissao = (Permissao) repositoryDao.find(permissao);
 		
 		Usuario usuario = new Usuario(permissao);
-		usuario.setLogin("teste 2");
+		usuario.setLogin("teste");
 		usuario.setSenha(EncryptMD5Util.getEncryptMD5("senha"));
+		usuario.setAtivo(true);
 		
 		repositoryDao.save(usuario);
 		
 		colaborador = new Colaborador(SexoType.M, endereco, contato,usuario);
 		colaborador.setNome("Paulo Sergio");
 		colaborador.setDataDeNascimento(DataUtil.getDataFormatadata("31/07/1988"));
-		colaborador.setIsAtivo(true);
-		colaborador.setCpf("1241412341");
+		colaborador.setCpf("12414212341");
 		
 		repositoryDao.save(colaborador);
 	}
@@ -80,7 +80,6 @@ public class ColaboradorTest implements ITest {
 		colaborador = new Colaborador();
 		colaborador.setId(12L);
 		colaborador = (Colaborador) repositoryDao.find(colaborador);
-		colaborador.setIsAtivo(true);
 		repositoryDao.update(colaborador);
 	}
 
@@ -103,8 +102,11 @@ public class ColaboradorTest implements ITest {
 	@Test
 	public void login() {
 		colaborador = new Colaborador();
-		colaborador.setId(12L);
-		colaborador = (Colaborador) repositoryDao.find(colaborador);
+		//colaborador.setId(15L);
+		//colaborador = (Colaborador) repositoryDao.find(colaborador);
+		colaborador.getUsuario().setLogin("teste");
+		colaborador.getUsuario().setAtivo(true);
+		colaborador.getUsuario().setSenha("senhaw");
 		colaborador = (Colaborador) repositoryDao.login(colaborador);
 		
 		System.out.println(colaborador);
@@ -113,8 +115,7 @@ public class ColaboradorTest implements ITest {
 	
 	public static void main(String[] args) {
 		ColaboradorTest c = new ColaboradorTest();
-		c.create();
-		c.findAll();
+		c.login();
 	}
 
 }

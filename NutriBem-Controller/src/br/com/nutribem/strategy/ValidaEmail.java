@@ -31,7 +31,7 @@ public class ValidaEmail implements IValidacaoStrategy {
 				return null;
 			} else if (email.indexOf('@') == -1 || email.contains(" ") || email.length() < 3 || email.endsWith("@")
 					|| email.startsWith("@")) {
-				retorno.append("Email inválido");
+				retorno.append("Email invÃ¡lido");
 				return retorno.toString();
 			}
 			

@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Loja;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de uma Loja
+ * Classe Strategy reponsavel pela Validacao de uma Loja
  * 
  * @author Paulinho
  *
@@ -14,8 +14,8 @@ public class ValidaLoja implements IValidacaoStrategy {
 	/**
 	 * 
 	 * @param recebe
-	 *            um objeto Loja e faz a Validação pelo Nome
-	 * @return Retorna um objeto Loja do BD válido ou Null se não for
+	 *            um objeto Loja e faz a Validacao pelo Nome
+	 * @return Retorna um objeto Loja do BD valido ou Null se nao for
 	 *         encontrado
 	 */
 	public String validar(EntidadeDominio entDominio) {
@@ -44,12 +44,12 @@ public class ValidaLoja implements IValidacaoStrategy {
 			}
 			
 			if (loja.getEndereco()==null) {
-				retorno.append("A loja deve ter um endereço preenchido");
+				retorno.append("A loja deve ter um endereÃ§o preenchido");
 				return retorno.toString();
 			}
 			
 			if (loja.getEndereco().getLogradouro().equals("")) {
-				retorno.append("A loja deve ter um endereço preenchido");
+				retorno.append("A loja deve ter um endereÃ§o preenchido");
 				return retorno.toString();
 			}
 

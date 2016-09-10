@@ -4,7 +4,7 @@ import br.com.nutribem.dominio.Colaborador;
 import br.com.nutribem.dominio.EntidadeDominio;
 
 /**
- * Classe Strategy reponsável pela Validação de um CPf
+ * Classe Strategy reponsÃ¡vel pela ValidaÃ§Ã£o de um CPf
  * 
  * @author Paulinho
  *
@@ -22,7 +22,7 @@ public class ValidaCPF implements IValidacaoStrategy {
 			Colaborador colaborador = (Colaborador) entDominio;
 			String cpf = colaborador.getCpf();
 
-			// retirando ponto e traço do cpf
+			// retirando ponto e traÃ§o do cpf
 			String novoCpf = cpf.replace(".", "");
 			novoCpf = novoCpf.replace("-", "");
 			int totalPosicoes = novoCpf.length();
@@ -30,9 +30,9 @@ public class ValidaCPF implements IValidacaoStrategy {
 			int somaPrimeiroDigito = 0;
 			int somaSegundoDigito = 0;
 
-			// se não tiver 11 digito sai retorna FALSE
+			// se nï¿½o tiver 11 digito sai retorna FALSE
 			if (totalPosicoes != 11) {
-				retorno.append("CPF inválido");
+				retorno.append("CPF invï¿½lido");
 				return retorno.toString();
 			}
 
@@ -40,7 +40,7 @@ public class ValidaCPF implements IValidacaoStrategy {
 					|| novoCpf.equals("44444444444") || novoCpf.equals("55555555555") || novoCpf.equals("66666666666")
 					|| novoCpf.equals("77777777777") || novoCpf.equals("88888888888") || novoCpf.equals("99999999999")
 					|| novoCpf.equals("00000000000")) {
-				retorno.append("CPF inválido");
+				retorno.append("CPF invï¿½lido");
 				return retorno.toString();
 			}
 
@@ -60,7 +60,7 @@ public class ValidaCPF implements IValidacaoStrategy {
 
 			// valida o primerio digito
 			if (Integer.parseInt(String.valueOf(novoCpf.charAt(9))) != primeiroDigito) {
-				retorno.append("CPF inválido");
+				retorno.append("CPF invï¿½lido");
 				return retorno.toString();
 			}
 			aux = 11; // aux recebe o valor 11 para calcular o segundo digito
@@ -80,7 +80,7 @@ public class ValidaCPF implements IValidacaoStrategy {
 
 			// valida o segundo digito
 			if (Integer.parseInt(String.valueOf(novoCpf.charAt(10))) != segundoDigito) {
-				retorno.append("CPF inválido");
+				retorno.append("CPF invï¿½lido");
 				return retorno.toString();
 			}
 
