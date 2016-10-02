@@ -274,7 +274,7 @@ public class Fachada implements IFachada {
 			resultado.setMsg("Operação efetuada com sucesso!");
 			if (entidade.getId() == 0) {
 				resultado = new Resultado();
-				resultado.setMsg("Objeto já cadastrado.\n");
+				resultado.setMsg("Erro ao Cadastrar.\n");
 				return resultado;
 			}
 

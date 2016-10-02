@@ -12,6 +12,7 @@ import br.com.nutribem.dominio.Cidade;
 import br.com.nutribem.dominio.Colaborador;
 import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.dominio.Estado;
+import br.com.nutribem.dominio.Produto;
 import br.com.nutribem.factory.HibernateUtil;
 
 public class RepositoryDao implements IDAO {
@@ -147,6 +148,36 @@ public class RepositoryDao implements IDAO {
 		}
 
 		return estadoRetorno;
+	}
+	
+	/**
+	 * 
+	 * @param Produto
+	 *            Recebe um entidade Produto e localiza pelo seu Codigo de barras
+	 * @return retorna null se nao encontrar ou um entidade Produto preenchida
+	 */
+	public Produto findProdutoByCodigoBarras(Produto produto	) {
+
+		Produto produtoRetorno = null;	
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery("from Produto where codigo_barras = ?");
+			query.setParameter(0, produto.getCodigoBarras());
+
+			produtoRetorno = new Produto();
+			produtoRetorno = (Produto) query.getSingleResult();
+
+		} catch (NoResultException nre) {
+			return null;
+		} catch (Exception e) {
+			System.out.println("Erro ao Pesquisar objeto no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return produtoRetorno;
 	}
 
 	/**

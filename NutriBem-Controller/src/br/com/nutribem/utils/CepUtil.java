@@ -31,17 +31,17 @@ public abstract class CepUtil {
 		} else {
 			endereco = new Endereco();
 			endereco.setCep(cep);
-			endereco.setLogradouro(webCep.getLogradouroFull());
-			endereco.setBairro(webCep.getBairro());
+			endereco.setLogradouro(webCep.getLogradouroFull().toUpperCase());
+			endereco.setBairro(webCep.getBairro().toUpperCase());
 
 			Estado estado = new Estado();
-			estado.setUf(webCep.getUf());
+			estado.setUf(webCep.getUf().toUpperCase());
 
 			estado = (Estado) new RepositoryDao().findEstadoByUf(estado);
 
 			Cidade cidade = new Cidade();
 			cidade.setEstado(estado);
-			cidade.setNome(webCep.getCidade());
+			cidade.setNome(webCep.getCidade().toUpperCase());
 			
 			cidade = (Cidade) new RepositoryDao().findCidadeByNomeAndUf(cidade);
 

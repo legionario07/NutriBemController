@@ -46,9 +46,9 @@ public class ColaboradorTest implements ITest {
 		
 		repositoryDao.save(usuario);
 		
-		colaborador = new Colaborador(SexoType.M, endereco, contato,usuario);
+		colaborador = new Colaborador(SexoType.MASCULINO, endereco, contato,usuario);
 		colaborador.setNome("Paulo Sergio");
-		colaborador.setDataDeNascimento(DataUtil.getDataFormatadata("31/07/1988"));
+		colaborador.setDataDeNascimento(DataUtil.getDataFormatada("31/07/1988"));
 		colaborador.setCpf("12414212341");
 		
 		repositoryDao.save(colaborador);

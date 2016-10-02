@@ -41,6 +41,11 @@ public class ValidaFornecedor implements IValidacaoStrategy {
 				retorno.append("O cnpj deve ser prenchido");
 				return retorno.toString();
 			}
+                        
+                        if (fornecedor.getContato().getTelefoneComercial()=="") {
+				retorno.append("O Telefone Comercial deve ser prenchido");
+				return retorno.toString();
+			}
 			
 
 		} else {

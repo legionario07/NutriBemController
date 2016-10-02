@@ -137,7 +137,7 @@ public abstract class DataUtil {
 	 * @param data Recebe um string com a data
 	 * @return Uma data no Padrao dd/MM/yyyy
 	 */
-	public static Date getDataFormatadata(String data) {
+	public static Date getDataFormatada(String data) {
 
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
