@@ -33,12 +33,7 @@ public class ValidaItemPedido implements IValidacaoStrategy {
 				return retorno.toString();
 			}
 			
-			if (itemPedido.getProdutos()==null) {
-				retorno.append("É necessario haver produtos.");
-				return retorno.toString();
-			}
-			
-			if (itemPedido.getProdutos().isEmpty()) {
+			if (itemPedido.getProduto()==null) {
 				retorno.append("É necessario haver produtos.");
 				return retorno.toString();
 			}

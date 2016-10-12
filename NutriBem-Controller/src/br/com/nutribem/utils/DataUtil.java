@@ -34,7 +34,7 @@ public abstract class DataUtil {
 
 		// Pegando a data atual do sistema
 		Date data = Calendar.getInstance().getTime();
-		SimpleDateFormat stf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat stf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		String strDataAtual = stf.format(data);
 
 		try {

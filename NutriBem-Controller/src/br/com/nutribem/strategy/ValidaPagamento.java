@@ -1,10 +1,7 @@
 package br.com.nutribem.strategy;
 
-import java.math.BigDecimal;
-
 import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.dominio.Pagamento;
-import br.com.nutribem.dominio.Pedido;
 import br.com.nutribem.utils.DataUtil;
 
 /**
@@ -47,12 +44,8 @@ public class ValidaPagamento implements IValidacaoStrategy {
 				return retorno.toString();
 			}
 			
-			BigDecimal valorPedidos = new BigDecimal(0);
-			for(Pedido pedido : pagamento.getPedidos()){
-				valorPedidos.add(pedido.getValor());
-			}
 			
-			if (pagamento.getValorPago().compareTo(valorPedidos)<-1) {
+			if (pagamento.getPedido().getValor().compareTo(pagamento.getValorPago())==1) {
 				retorno.append("O valor pago n�o pode ser menor que o total a ser pago");
 				return retorno.toString();
 			}
