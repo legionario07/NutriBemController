@@ -8,10 +8,13 @@ import java.util.HashMap;
 import br.com.nutribem.dominio.EntidadeDominio;
 import br.com.nutribem.factory.HibernateUtil;
 import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.swing.JRViewer;
 import org.hibernate.internal.SessionImpl;
 
@@ -86,6 +89,43 @@ public class GeraRelatorio<T extends EntidadeDominio> {
 		}
 
 	}/*/
+     public static void exportarGUIPDFList(HashMap<String, Object> parametros, File jasper, List<EntidadeDominio> lista) {
+
+        String nome = "NutriBem - Relatórios";
+
+        JasperPrint jasperPrint;
+        try {
+            jasperPrint = JasperFillManager.fillReport(jasper.getPath(), parametros,
+					new JRBeanCollectionDataSource(lista));
+            
+            JRViewer jRViewer = new JRViewer(jasperPrint);
+            // cria o JFrame
+            JFrame frameRelatorio = new JFrame(nome);
+
+            // adiciona o JRViewer no JFrame
+            frameRelatorio.add(jRViewer, BorderLayout.CENTER);
+
+            // configura o tamanho padrão do JFrame
+            frameRelatorio.setSize(500, 500);
+
+            // maximiza o JFrame para ocupar a tela toda.
+            frameRelatorio.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+            // configura a operação padrão quando o JFrame for fechado.
+            frameRelatorio.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+            // exibe o JFrame
+            frameRelatorio.setVisible(true);
+            
+            //JasperPrintManager.printReport(jasperPrint, false);
+            //JasperExportManager.exportReportToPdfFile(jasperPrint, nome);
+
+        } catch (JRException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+    
     public static void exportarGUIPDF(HashMap<String, Object> parametros, File jasper) {
 
         String nome = "NutriBem - Relatórios";
@@ -129,5 +169,6 @@ public class GeraRelatorio<T extends EntidadeDominio> {
         String s = sdf.format(c.getTime());
         return s.replace("/", "").replace(" ", "").replace(":", "");
     }
+
 
 }

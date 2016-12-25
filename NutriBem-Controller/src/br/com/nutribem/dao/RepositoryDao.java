@@ -288,5 +288,32 @@ public class RepositoryDao implements IDAO {
 
 		return colaboradorRetorno;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<EntidadeDominio> findCidadeForEstado(Estado estado) {
+		List<EntidadeDominio> lista = new ArrayList<EntidadeDominio>();
+		
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("from Cidade c ");
+		sql.append("where estado_id = ?");
+
+		session = HibernateUtil.getSession();
+		try {
+
+			Query query = session.createQuery(sql.toString());
+			query.setParameter(0, estado.getId());
+			
+			lista = query.getResultList();
+
+		} catch (Exception e) {
+			System.out.println("Erro ao pesquisar objetos no Banco de Dados - \n" + e.getMessage());
+		} finally {
+			session.close();
+		}
+
+		return lista;
+	}
+
 
 }
