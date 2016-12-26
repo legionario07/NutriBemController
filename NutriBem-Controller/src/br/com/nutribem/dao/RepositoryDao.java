@@ -241,7 +241,10 @@ public class RepositoryDao implements IDAO {
 			session.close();
 		}
 
-		return lista.get(0).getId();
+                if(lista.isEmpty())
+                    return Long.valueOf(1);
+                else
+                    return lista.get(0).getId();
 	}
 
 	/**

@@ -1,8 +1,8 @@
 package br.com.nutribem.dao;
 
+import br.com.nutribem.dominio.EntidadeDominio;
 import java.util.List;
 
-import br.com.nutribem.dominio.EntidadeDominio;
 
 public interface IDAO {
 
