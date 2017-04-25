@@ -15,8 +15,7 @@ public class CategoriaTest implements ITest {
 	public Categoria categoria = null;
 	public RepositoryDao repositoryDao = new RepositoryDao();
 	
-	@Override
-	@Ignore
+	@Test
 	public void create() {
 		
 		categoria = new Categoria("Teste");
